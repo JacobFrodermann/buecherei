@@ -5,7 +5,7 @@ h1 {
 *{
   font-family: Arial;
 }
-section {
+section, .Category {
   padding: 2.5px;
   margin: 1px;
   background-color: rgb(200,200,200);
@@ -26,10 +26,16 @@ li{
 }
 input {
   float: right;
-  margin-right: 20px;
+  margin-right: 50px;
   border: none;
   font-size: larger;
   background-color: rgb(205,205,205);
   border-bottom: solid 2px #0f0f0f;
   border-radius: 0px;
+}
+.fa-magnifying-glass{
+  float: right;
+  margin-right: 10px;
+  position: relative;
+  top:-5;
 }

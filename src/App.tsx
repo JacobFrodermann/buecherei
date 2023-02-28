@@ -1,4 +1,8 @@
 import './style/App.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import 'font-awesome/css/font-awesome.min.css';
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import Category from  './Category'
 
 function App(props) {
 return <div className="App">
@@ -11,34 +15,24 @@ return <div className="App">
           <li>
             <section>
               <p>
-                <h2>Suche<input id="search" placeholder="|"/></h2>
+                <h2>Suche<input id="search" placeholder="|"/><FontAwesomeIcon icon={faMagnifyingGlass}/></h2>
               </p>
             </section>
           </li>
           <li>
-          <section>
-            <h3>Krimi</h3>
-          </section>
+            <Category Name="Krimi" />
           </li>
           <li>
-          <section>
-            <h3>Sachbuecher</h3>
-          </section>
+            <Category Name="Sachbuecher"/>
           </li>
           <li>
-          <section>
-            <h3>Romane</h3>
-          </section>
+            <Category Name="Romane"/>
           </li>
           <li>
-          <section>
-            <h3>Fantasy</h3>
-          </section>
+            <Category Name="Fantasy"/>
           </li>
           <li>
-          <section>
-            <h3>fuer Kinder</h3>
-          </section>
+            <Category Name="fuer Kinder"/>
           </li>
         </ul>
       </header>

@@ -1,0 +1,35 @@
+h1 {
+  text-align: center;
+  font-size: xx-large;
+}
+*{
+  font-family: Arial;
+}
+section {
+  padding: 2.5px;
+  margin: 1px;
+  background-color: rgb(200,200,200);
+}
+h2 {
+  margin-left: 20px;
+}
+h3 {
+  margin-left: 40px;
+}
+ul{
+  list-style: none;
+  padding: 0;
+}
+li{
+  margin: none;
+  pad: none;
+}
+input {
+  float: right;
+  margin-right: 20px;
+  border: none;
+  font-size: larger;
+  background-color: rgb(205,205,205);
+  border-bottom: solid 2px #0f0f0f;
+  border-radius: 0px;
+}

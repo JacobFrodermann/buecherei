@@ -1,1 +1,1 @@
-surreal start -u root -p root file:///home/jef/Documents/Git/buecherei/db
+surreal start -u root -p root file:///home/jef/Documents/Git/buecherei/api/db

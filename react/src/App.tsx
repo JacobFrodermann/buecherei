@@ -2,7 +2,7 @@ import './style/App.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import 'font-awesome/css/font-awesome.min.css';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
-import Category from  './Category.js'
+import Category from  './Category'
 
 function App(props) {
 return <div className="App">

@@ -1,6 +1,7 @@
-// tsconfig.json
 {
     "compilerOptions": {
+	  "target": "ES2022",
+	  "module": "Node16",
       "lib": ["ES2015", "ES2022","dom" ],
       "jsx": "react-jsx"
     },

@@ -1,5 +1,6 @@
 const express = require('express');
-const Surreal = require('surrealdb.js');
+const cors = require('cors')
+const Surreal = require('surrealdb.js').default;
 
 const db = new Surreal('http://127.0.0.1:8000/rpc');
 const app = express();
@@ -13,6 +14,7 @@ db.use('test', 'test')
 
 console.log("Running")
 	/* Select a specific namespace / database
+
 	
 
 	// Create a new person with a random id
@@ -41,5 +43,24 @@ console.log("Running")
 
 	console.log(groups)
 	*/
-app.get('/get/' , (req, res) => {
+
+app.get('/get/',cors(), async (req : any, res : any) => {
+	res.writeHead(200, {"Content-Type": "application/json"});
+	let books
+	if (req.query.type) {
+		books = await db.query("SELECT * FROM books WHERE types CONTAINS types:{type}".replace("{type}", req.query.type));
+	} else {
+		books = await db.select('books')
+	}
+	res.write(JSON.stringify(books));
+	res.send();
+});
+
+app.get("/catgeories", cors(), async (req : any, res : any) => {
+	res.writeHead(200, {"Content-Type": "application/json"});
+	let types = await db.select("types")
+	res.write(JSON.stringify(types))
+	res.send();
 })
+
+app.listen(3001)

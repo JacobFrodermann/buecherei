@@ -20,10 +20,6 @@ ul{
   list-style: none;
   padding: 0;
 }
-li{
-  margin: none;
-  pad: none;
-}
 input {
   float: right;
   margin-right: 50px;
@@ -38,4 +34,13 @@ input {
   margin-right: 10px;
   position: relative;
   top:-5;
+}
+svg{
+  float: right;
+  margin-right: 7.5px;
+  position: relative;
+  top: 0px;
+}
+.fa-magnifying-glass{
+  top: 5px;
 }

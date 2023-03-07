@@ -7,10 +7,6 @@ import "./style/Category.css"
 
 let books: Array<book> 
 
-interface props {
-    name: string;
-    id : string;
-}
 interface book {
     author: string,
     types:  Array<string>,
@@ -26,7 +22,7 @@ async function fetchBooks(id) {
 }
 
 function renderBooks(books: Array<book>, scroll: number) {
-    if (books.length == 0) {return <p>Loading</p>}
+    if (books.length === 0) {return <p>Loading</p>}
 
     let h : Array<book> = []
     
@@ -58,11 +54,11 @@ export default function Category(props) {
     return <div className="Category">
         <h3 onClick={ () => {setHidden(!hidden)} } > {props.name } <FontAwesomeIcon icon={hidden ? faCaretDown : faCaretLeft} /></h3>
         <div className="shelf" style={{ display: hidden ? "none" : "flex"}}>
-            <div className="Arrow" onClick={ () => {if (scroll != 0) setScroll(scroll-1)} }>
+            <div className="Arrow" onClick={ () => {if (scroll !== 0) setScroll(scroll-1)} }>
                 <FontAwesomeIcon icon={ faArrowLeft }/>
             </div>
             { renderBooks(books, scroll) }
-            <div className="Arrow" onClick={ () => {if (scroll != books.length-4) setScroll(scroll+1)}}>
+            <div className="Arrow" onClick={ () => {if (scroll !== books.length-4) setScroll(scroll+1)}}>
                 <FontAwesomeIcon icon={ faArrowRight }/>
             </div>
         </div>

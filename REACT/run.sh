@@ -1,1 +1,1 @@
-npx serve -s build -l 8000
+npm start 

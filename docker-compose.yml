@@ -1,0 +1,29 @@
+version: "3.8"
+services:
+  db:
+    container_name: db
+    image: db:1
+    restart: on-failure
+    networks:
+      - lol   
+  api:
+    container_name: api
+    image: api:1
+    restart: on-failure
+    ports:
+      - 3001:3001
+    networks:
+      - lol   
+  react:
+    container_name: react
+    image: react:1
+    restart: on-failure
+    ports:
+      - 8000:8000
+    networks:
+      - lol  
+networks:
+  net1:
+    name: lol
+    driver: custom-driver-1
+

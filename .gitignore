@@ -2,7 +2,7 @@
 
 # dependencies
 /API/node_modules/
-/API/node_modules/
+/REACT/node_modules/
 /API/.pnp
 /REACT/.pnp
 .pnp.js

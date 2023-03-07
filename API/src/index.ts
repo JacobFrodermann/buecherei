@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors')
 const Surreal = require('surrealdb.js').default;
 
-const db = new Surreal('http://127.0.0.1:8000/rpc');
+const db = new Surreal('http://db:3002/rpc');
 const app = express();
 
 db.signin({
@@ -63,4 +63,14 @@ app.get("/catgeories", cors(), async (req : any, res : any) => {
 	res.send();
 })
 
-app.listen(3001)
+app.get("/test", cors(), (req: any, res: any) => {
+	res.write("Test")
+	res.send()})
+
+var books = db.select('books')
+
+console.log(books)
+
+let port = 3001
+app.listen(port)
+console.log("running on " + port)

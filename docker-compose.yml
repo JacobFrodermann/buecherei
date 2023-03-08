@@ -21,7 +21,7 @@ services:
     build: ./REACT/
     restart: on-failure
     ports:
-      - 8000:8000
+      - 8000:3000
     networks:
       - lol  
 networks:

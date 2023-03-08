@@ -1,9 +1,10 @@
 import './style/App.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import 'font-awesome/css/font-awesome.min.css';
-import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import { faAdd, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import Category from  './Category'
 import { useEffect, useState } from "react";
+import Create from './Create';
 
 interface category {
   name : string;
@@ -27,26 +28,22 @@ function renderCategories(categories : Array<category>) {
 }
 
 function App() {
-  
    const [categories, initCategories] = useState([])
   
    useEffect(() => {
        fetchCategories().then((data => {initCategories(data)}))
    },[])
 
+   const [adding, setAdding] = useState(false)
+
   return <div className="App">
       <header className="App-header">
         <section>
           <h1>Bücherei</h1>
-          <h2>Regale:</h2>
+          <h2>Regale: <section id="add" onClick={() => {setAdding(true)}}><FontAwesomeIcon icon={faAdd} /></section></h2>
+          <Create />
         </section>
         <ul>
-          <li>
-            <section>
-                <h2>Suche<input id="search" placeholder="|"/><FontAwesomeIcon icon={faMagnifyingGlass}/></h2>
-                <Category search=""/>
-            </section>
-          </li>
           { renderCategories(categories) }
         </ul>
       </header>

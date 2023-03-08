@@ -5,6 +5,9 @@ h1 {
 *{
   font-family: Arial;
 }
+#add{
+  padding: 10px;
+}
 section, .Category {
   padding: 2.5px;
   margin: 1px;

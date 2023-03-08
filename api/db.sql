@@ -71,4 +71,3 @@ UPDATE types:thriller CONTENT { id: types:thriller, name: "Thriller" };
 -- ------------------------------
 
 COMMIT TRANSACTION;
-

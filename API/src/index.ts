@@ -13,38 +13,9 @@ db.signin({
 db.use('test', 'test')
 
 console.log("Running")
-	/* Select a specific namespace / database
-
-	
-
-	// Create a new person with a random id
-	let created = await db.create("person", {
-		title: 'Founder & CEO',
-		name: {
-			first: 'Tobie',
-			last: 'Morgan Hitchcock',
-		},
-		marketing: true,
-		identifier: Math.random().toString(36).substr(2, 10),
-	});
-
-	// Update a person record with a specific id
-	let updated = await db.change("person:jaime", {
-		marketing: true,
-	});
-
-	// Select all people records
-	let people = await db.select("person");
-
-	// Perform a custom advanced query
-	let groups = await db.query('SELECT marketing, count() FROM type::table($tb) GROUP BY marketing', {
-		tb: 'person',
-	});
-
-	console.log(groups)
-	*/
 
 app.get('/get/',cors(), async (req : any, res : any) => {
+	console.log("/get?" + req.query.id);
 	res.writeHead(200, {"Content-Type": "application/json"});
 	let books
 	if (req.query.type) {
@@ -57,6 +28,7 @@ app.get('/get/',cors(), async (req : any, res : any) => {
 });
 
 app.get("/catgeories", cors(), async (req : any, res : any) => {
+	console.log("/catgeories");
 	res.writeHead(200, {"Content-Type": "application/json"});
 	let types = await db.select("types")
 	res.write(JSON.stringify(types))
@@ -69,6 +41,8 @@ app.get("/test", cors(), (req: any, res: any) => {
 
 var books = db.select('books')
 
+
+books.then((books:any) => {console.log(books)})
 console.log(books)
 
 let port = 3001

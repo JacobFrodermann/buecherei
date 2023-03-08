@@ -15,6 +15,7 @@ interface book {
     cover:  string,
 }
 async function fetchBooks(id) {
+    if (id === "null") return []
     let res = await fetch("http://localhost:3001/get?type=" + id)
     let Response = await res.json();
     books = Response[0].result as Array<book>;

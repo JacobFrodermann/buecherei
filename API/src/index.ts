@@ -1,9 +1,12 @@
 const express = require('express');
 const cors = require('cors')
 const Surreal = require('surrealdb.js').default;
+const bodyParser = require('body-parser');
 
 const db = new Surreal('http://db:3002/rpc');
 const app = express();
+
+app.use(bodyParser.json())
 
 db.signin({
 	user: 'root',
@@ -40,6 +43,13 @@ app.get("/test", cors(), (req: any, res: any) => {
 	res.send()})
 
 var books = db.select('books')
+
+app.post("/add", (req: any, res: any) => {
+	console.log(req.Body)
+	res.setHeader('Access-Control-Allow-Origin', '*');
+	res.writeHead(200);
+	res.send()
+})
 
 
 books.then((books:any) => {console.log(books)})

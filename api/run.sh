@@ -1,2 +1,2 @@
 bash import.sh &
-surreal start -u root -p root file://app -b 0.0.0.0:3002
+surreal start -b 0.0.0.0:3002 -u root -p root file://db

@@ -8,4 +8,4 @@ RUN npm install
 
 EXPOSE 3001/tcp
 
-CMD ["bash", "run.sh"]
+CMD ["node", "."]

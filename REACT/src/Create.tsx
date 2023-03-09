@@ -9,7 +9,14 @@ interface props {
 interface category {
     name : string;
     id : string;
-  }
+}
+interface post{
+    title : string;
+    author : string;
+    types: Array<string>;
+    cover : string;
+    isbn : string;
+}
 
 function addBook(categories: category[]) {
     return <div>
@@ -34,10 +41,36 @@ function addBook(categories: category[]) {
 function add(bookOrShelf : boolean, categories: category[]){
     if (bookOrShelf) {
         let types = []
-        let boxes = document.getElementsByClassName("type").length;
-        for (var i = 0; i < boxes ; i++) {
+        let boxes = document.getElementsByClassName("type") as any;
+        for (var i = 0; i < boxes.length ; i++) {
             if (boxes[i].checked) types.push(categories[i].id)
         } 
+        let title : HTMLInputElement = document.getElementById("title") as HTMLInputElement;
+        let author : HTMLInputElement = document.getElementById("author") as HTMLInputElement;
+        let isbn : HTMLInputElement = document.getElementById("isbn") as HTMLInputElement;
+        let cover : HTMLInputElement = document.getElementById("cover") as HTMLInputElement;
+        let post : post = {
+            title: "",
+            author: "",
+            types: [],
+            cover: "",
+            isbn: ""
+        }
+        post.title = title.value
+        post.author = author.value
+        post.isbn = isbn.value
+        post.cover = cover.value
+        post.types = types
+
+        fetch("http://localhost:3001/add", {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'text/plain'
+            },
+            mode: 'cors',
+            body: JSON.stringify(post)
+          }).catch(err => {console.error(err);});
+        console.log(JSON.stringify(post))
     }
 }
 function addType() {
@@ -51,13 +84,13 @@ let toAdd = addingBook ? addBook(props.types) : addType()
     if (props.hidden) {return <div id="wrap"><div id="bg"><div id="center">
         <h1>Add</h1>
         <div className="normal">
-            <input type="radio" id="type" name="what" onChange={(event) => {setAddingBook(event.currentTarget.value != "on")}}/>
+            <input type="radio" id="type" name="what" onChange={(event) => {setAddingBook(event.currentTarget.value !== "on")}}/>
             <label htmlFor="type">Shelf</label>
             <br />
-            <input type="radio" id="addBook"  name="what" onChange={(event) => {setAddingBook(event.currentTarget.value == "on")}}/>
+            <input type="radio" id="addBook"  name="what" onChange={(event) => {setAddingBook(event.currentTarget.value === "on")}}/>
             <label htmlFor="addBook">Book</label> 
         </div>
         { toAdd }
-        <p><section className="button" onClick={() => {add(addingBook, props.types)}}>add</section> <section className="button">done</section></p>
+        <p><section className="button" onClick={() => {add(addingBook, props.types)}}>add</section> <section className="button" onClick={() => {props.setHidden(false)}}>done</section></p>
 </div></div></div>} else {return <p></p>}
 }

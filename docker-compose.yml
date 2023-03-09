@@ -4,10 +4,8 @@ services:
     container_name: db
     build: ./api
     restart: on-failure
-    ports:
-      - 3002:3002
     networks:
-      - lol   
+        - lol   
   api:
     container_name: api
     build: ./API
@@ -21,7 +19,7 @@ services:
     build: ./REACT/
     restart: on-failure
     ports:
-      - 8000:3000
+      - 3000:8000
     networks:
       - lol  
 networks:

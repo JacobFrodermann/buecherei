@@ -14,6 +14,11 @@ interface book {
     isbn:   string,
     cover:  string,
 }
+interface props {
+    id:string;
+    name:string;
+}
+
 async function fetchBooks(id) {
     if (id === "null") return []
     let res = await fetch("http://localhost:3001/get?type=" + id)
@@ -41,7 +46,7 @@ function renderBooks(books: Array<book>, scroll: number) {
         )
 }
 
-export default function Category(props) {
+export default function Category(props : props) {
     const [books, initBooks] = useState([])
 
     useEffect(() => {

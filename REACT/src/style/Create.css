@@ -1,0 +1,16 @@
+div{
+    padding: 0px;
+    margin: 0px;
+}
+.button {
+    padding: 10px;
+    margin: 10px;
+    display: inline-block;;
+}
+.normal{
+    display: block;
+    float: left;
+}
+label{
+    margin: 20px;
+}

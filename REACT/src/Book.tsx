@@ -1,6 +1,6 @@
 import "./style/book.css"
 import "./style/Details.css"
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Details from "./Details";
 
 interface book {
